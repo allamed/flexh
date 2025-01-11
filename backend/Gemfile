@@ -54,4 +54,10 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem 'http'
+  gem 'rack-cors'
 end
+
+# Add these to the main group (if not already present)
+gem 'http'
+gem 'rack-cors'
