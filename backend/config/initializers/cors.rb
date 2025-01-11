@@ -7,6 +7,6 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
       headers: :any,
       methods: [:post],
       credentials: false,
-      expose: ['Authorization']  # Allow Authorization header to be exposed
+      expose: ['FLEXHIRE-API-KEY']
   end
 end

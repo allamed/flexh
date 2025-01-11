@@ -4,18 +4,16 @@ class Api::GraphqlController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def proxy
-    # Extract and log the incoming authorization header
-    auth_header = request.headers['Authorization']
-    api_key = auth_header&.split(' ')&.last
+    # Extract and log the incoming API key header
+    api_key = request.headers['FLEXHIRE-API-KEY']
     
-    Rails.logger.info "Incoming auth header: #{auth_header}"
-    Rails.logger.info "Extracted API key: #{api_key}"
+    Rails.logger.info "Incoming API key: #{api_key}"
 
     begin
       # Construct the headers for Flexhire
       headers = {
         'Content-Type' => 'application/json',
-        'Authorization' => "Token #{api_key}"
+        'FLEXHIRE-API-KEY' => api_key
       }
       
       Rails.logger.info "Outgoing headers: #{headers.inspect}"
